@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+
+    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+
+    <!-- Scripts -->
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&family=Sansita+Swashed:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #a7a7a7;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #929292;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .user-wrapper, .message-wrapper {
+            border: 1px solid #dddddd;
+            overflow-y: auto;
+        }
+
+        .user-wrapper {
+            height: 50vh;
+        }
+
+        .user {
+            cursor: pointer;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .user:hover {
+            background: #eeeeee;
+        }
+
+        .user:last-child {
+            margin-bottom: 0;
+        }
+
+        .pending {
+            position: absolute;
+            left: 13px;
+            top: 9px;
+            background: #b600ff;
+            margin: 0;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            line-height: 18px;
+            padding-left: 5px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
+        .media-left {
+            margin: 0 10px;
+        }
+
+        .media-left img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+        }
+
+        .media-body p {
+            margin: 6px 0;
+        }
+
+        .message-wrapper {
+            padding: 10px;
+            height: 50vh;
+            background: #eeeeee;
+        }
+
+        .messages .message {
+            margin-bottom: 15px;
+        }
+
+        .messages .message:last-child {
+            margin-bottom: 0;
+        }
+
+        .received, .sent {
+            width: 45%;
+            padding: 3px 10px;
+            border-radius: 10px;
+        }
+
+        .received {
+            background: #ffffff;
+        }
+
+        .sent {
+            background: #3bebff;
+            float: right;
+            text-align: right;
+        }
+
+        .message p {
+            margin: 5px 0;
+        }
+
+        .date {
+            color: #777777;
+            font-size: 12px;
+        }
+
+        .active {
+            background: #eeeeee;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 15px 0 0 0;
+            display: inline-block;
+            border-radius: 4px;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid #cccccc;
+        }
+
+        input[type=text]:focus {
+            border: 1px solid #aaaaaa;
+        }
+        .title_home {
+            font-size: 13px;
+            font-family: 'PT Sans', sans-serif;
+            font-family: 'Sansita Swashed', cursive;
+        }
+    </style>
+    
+    <?php echo $__env->yieldContent('css'); ?>
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container p-0 m-0 ">
+                <div class="row">
+                    <div class="col-6">
+                        <a href="<?php echo e(route('statistical-admin')); ?>" style="text-decoration: none">
+                            <div class="img_logo">
+                                <img src="<?php echo e(asset('img/logo_brown.png')); ?>" alt="logo" width="160" height="70">
+                            </div>
+                            <div class="title_home">
+                                <span>Tầm nhìn - Hành động - Kiên trì- Thành công- Nhân văn</span>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <div class="col-6">
+                        <img src="https://aquavietnam.com.vn/wp-content/themes/aquavietnam/img/services/slider.jpg" style=" height:120px; "  alt="Img_support">
+                    </div>
+                    
+                </div>
+                
+                
+
+                <div class="collapse navbar-collapse" style="margin-left:40%" id="navbarSupportedContent">
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav">
+                        <?php $__currentLoopData = Session::get('5fb77f190b788f0029513b14'); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown"  class=" nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <div class="row mr-5 w-100">
+                                        <div class="col-6 mt-2">
+                                            <h6>
+                                                <?php echo e($data->name); ?>
+
+                                            </h6>
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="rounded-circle"
+                                            src="<?php echo e(asset('img/undraw_profile.svg')); ?>" width="40"> 
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo e(route('logout-admin')); ?>">
+                                        Đăng Xuất
+                                    </a>
+                                </div>
+                            </li>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+
+        <main class="py-4">
+            <?php echo $__env->yieldContent('content'); ?>
+        </main>
+    </div>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var host = window.location.protocol + "//" + window.location.host;
+        var receiver_id = '';
+        var my_id = 1;
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('81f7212b40cce2e34dc8', {
+            cluster: 'ap1'
+            });
+
+            var channel = pusher.subscribe('my-channel');
+
+            channel.bind('my-event', function (data) {
+                if (my_id == data.from) {
+                    $('#' + data.to).click();
+                } else if (my_id == data.to) {
+                    if (receiver_id == data.from) {
+                        $('#' + data.from).click();
+                    } else {
+                        var pending = parseInt($('#' + data.from).find('.pending').html());
+
+                        if (pending) {
+                            $('#' + data.from).find('.pending').html(pending + 1);
+                        } else {
+                            $('#' + data.from).append('<span class="pending">1</span>');
+                        }
+                    }
+                }
+            });
+
+            $('.user').click(function () {
+                $('.user').removeClass('active');
+                $(this).addClass('active');
+                $(this).find('.pending').remove();
+
+                receiver_id = $(this).attr('id');
+               
+                $.ajax({
+                    type: "get",
+                    url: host + "/message/" + receiver_id,
+                    data: "",
+                    cache: false,
+                    success: function (data) {
+                        $('#messages').html(data);
+                        scrollToBottomFunc();
+                    }
+                });
+            });
+
+            $(document).on('keyup', '.input-text input', function (e) {
+                var message = $(this).val();
+                if (e.keyCode == 13 && message != '' && receiver_id != '') {
+                    $(this).val('');
+                    var datastr = "receiver_id=" + receiver_id + "&message=" + message;
+                    $.ajax({
+                        type: "post",
+                        url: host + "/message",
+                        data: datastr,
+                        cache: false,
+                        success: function (data) {
+                        },
+                        error: function (jqXHR, status, err) {
+                        },
+                        complete: function () {
+                            scrollToBottomFunc();
+                        }
+                    })
+                }
+            });
+        });
+
+        function scrollToBottomFunc() {
+            $('.message-wrapper').animate({
+                scrollTop: $('.message-wrapper').get(0).scrollHeight
+            }, 50);
+        }
+    </script>
+</body>
+</html>
+<?php /**PATH C:\Users\ASUS\Desktop\pt\New folder\_\resources\views/Admin/Chat/layouts/app.blade.php ENDPATH**/ ?>
